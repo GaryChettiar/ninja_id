@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const HomePage());
 }
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage
 ({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int ninjaLevel = 0;
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -19,6 +25,9 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.grey[850],
           elevation: 0,
           ),
+          floatingActionButton: FloatingActionButton(onPressed: (){setState(() {
+            ninjaLevel += 1;
+          });}, child: Icon(Icons.add),backgroundColor: Colors.grey[800],),
       body: Padding(padding: EdgeInsets.fromLTRB(30 , 40, 30, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +65,7 @@ class HomePage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text("8",
+                    Text('$ninjaLevel',
                     style: TextStyle(
                       color: Colors.amberAccent[200],
                       letterSpacing: 2,
